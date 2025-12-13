@@ -1,0 +1,55 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50">
+  <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm">
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Sign Up</h2>
+
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm" class="space-y-4">
+      <input
+        name="fullName"
+        [(ngModel)]="fullName"
+        required
+        placeholder="Full Name"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        placeholder="Email"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        placeholder="Password"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+
+      <input
+        name="phone"
+        [(ngModel)]="phone"
+        placeholder="Phone (optional)"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+
+      <button
+        type="submit"
+        [disabled]="loading"
+        class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+      >
+        {{ loading ? 'Creating account...' : 'Sign Up' }}
+      </button>
+
+      <p *ngIf="error" class="text-red-500 text-sm text-center mt-2">{{ error }}</p>
+    </form>
+
+    <p class="text-sm text-center mt-4 text-gray-600">
+      Already have an account?
+      <a routerLink="/login" class="text-blue-600 hover:underline">Login</a>
+    </p>
+  </div>
+</div>
