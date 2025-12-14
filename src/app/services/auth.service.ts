@@ -27,7 +27,8 @@ export interface AuthResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly BASE_URL = 'http://localhost:3000/auth'; // 👈 Update if backend URL changes
+//   private readonly BASE_URL = 'http://localhost:3000/auth'; // 👈 Update if backend URL changes
+  private readonly BASE_URL = 'http://techlabs24.com/auth'; // 👈 Update if backend URL changes
 
   constructor(private http: HttpClient) {}
 
