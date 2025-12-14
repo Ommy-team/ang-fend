@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService, SignUpRequest } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +21,7 @@ export class Signup {
   loading = false;
   error = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
     this.loading = true;
@@ -36,6 +38,8 @@ export class Signup {
       next: (res) => {
         console.log('✅ Signup successful:', res);
         this.loading = false;
+        this.router.navigate(['/login']); // ✅ Redirect after successful signup
+
         // TODO: navigate to login or dashboard
       },
       error: (err) => {

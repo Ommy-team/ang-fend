@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService, SignInRequest } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class Login {
   loading = false;
   error = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   onSubmit() {
@@ -36,6 +37,8 @@ export class Login {
       next: (res) => {
         console.log('✅ Login successful:', res);
         this.loading = false;
+        this.router.navigate(['/home']);
+
         // TODO: handle token, redirect, etc.
       },
       error: (err) => {
